@@ -1,4 +1,5 @@
 
+
 # Проект YamDB  
   
 Проект позволяет собирать и отзывы о различных произведениях (фильмы, книги, музыки)  
@@ -70,7 +71,7 @@ python manage.py runserver
       dockerfile: api_yamdb/Dockerfile
 на
 
-	image: sasha0090/yamdb
+    image: sasha0090/yamdb
 
 Или можно сделать колон всего проекта и собрать самостоятельно.
 
@@ -78,7 +79,12 @@ python manage.py runserver
 ```
 docker-compose up -d --build
 ```
-В автоматическом режиме соберутся файлы статики, пройдут миграции и запустится сервер.
+В соберите файлы статики, и запустите миграции командами:
+```
+docker-compose exec web python manage.py makemigrations reviews users
+docker-compose exec web python manage.py migrate
+docker-compose exec web python manage.py collectstatic --no-input 
+```
 
 ◾ Создать суперпользователя можно командой:
 ```
@@ -94,3 +100,9 @@ docker-compose down -v
 ```
 docker-compose exec web python manage.py loaddata fixtures.json
 ```
+## Автор
+
+- **[Александр Телепин](https://github.com/sasha0090)** 
+
+
+### The MIT License
