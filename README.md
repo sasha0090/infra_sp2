@@ -79,11 +79,11 @@ python manage.py runserver
 ```
 docker-compose up -d --build
 ```
-В соберите файлы статики, и запустите миграции командами:
+Cоберите файлы статики, и запустите миграции командами:
 ```
 docker-compose exec web python manage.py makemigrations reviews users
 docker-compose exec web python manage.py migrate
-docker-compose exec web python manage.py collectstatic --no-input 
+docker-compose exec web python manage.py collectstatic --no-input
 ```
 
 ◾ Создать суперпользователя можно командой:
